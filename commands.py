@@ -4,13 +4,8 @@ import spotipy.util as util
 from time import sleep
 
 
-# oauth_token='BQC_M530qX96RxfP91sClFFMhJQKLY5VqNEr0k6WAofn9nM7iAJBSaSlXwi0XHGfb9zGa3KE'
-# redirect_uri='http://localhost:8888/callback'
-# client_secret='43134da423474123a0a8537d5889df30'
-# client_id='9289d7d4b7c44044a1dd07098ef55680'
-
-token = util.prompt_for_user_token('david.kim.9', 'user-modify-playback-state', client_id='9289d7d4b7c44044a1dd07098ef55680',
-                                   client_secret='43134da423474123a0a8537d5889df30', redirect_uri='http://localhost:8888/callback')
+token = util.prompt_for_user_token('david.kim.9', 'user-modify-playback-state', client_id='',
+                                   client_secret='', redirect_uri='')
 sp = spotipy.Spotify(auth=token)
 
 
@@ -23,7 +18,6 @@ def play(song=None):
         sp.start_playback()
     else:
         try:
-            # spotify:track:1Yk0cQdMLx5RzzFTYwmuld
             sp.start_playback(
                 uris=['spotify:track:' + sp.search(song, type='track')['tracks']['items'][0]['id']])
         except:

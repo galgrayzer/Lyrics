@@ -4,15 +4,11 @@ import lyricsgenius as lg
 from time import sleep
 
 
-# Get playing song from spotify
-# Client ID - '9289d7d4b7c44044a1dd07098ef55680'
-# Client Secret - '43134da423474123a0a8537d5889df30'
-
 def get_song():
     # Get the current song playing
     try:
-        token = util.prompt_for_user_token('david.kim.9', 'user-read-currently-playing', client_id='9289d7d4b7c44044a1dd07098ef55680',
-                                           client_secret='43134da423474123a0a8537d5889df30', redirect_uri='http://localhost:8888/callback')
+        token = util.prompt_for_user_token('david.kim.9', 'user-read-currently-playing', client_id='',
+                                           client_secret='', redirect_uri=')
         sp = spotipy.Spotify(auth=token)
         current_song = sp.current_user_playing_track()
         song_name = current_song['item']['name']
@@ -20,8 +16,8 @@ def get_song():
         return song_name, song_artist
     except:
         try:
-            token = util.prompt_for_user_token('david.kim.9', 'user-read-currently-playing', client_id='9289d7d4b7c44044a1dd07098ef55680',
-                                               client_secret='43134da423474123a0a8537d5889df30', redirect_uri='http://localhost:8888/callback')
+            token = util.prompt_for_user_token('david.kim.9', 'user-read-currently-playing', client_id='',
+                                               client_secret='', redirect_uri=')
             sp = spotipy.Spotify(auth=token)
             current_song = sp.current_user_playing_track()
             song_name = current_song['item']['name']
@@ -32,7 +28,7 @@ def get_song():
 
 
 def main():
-    genius = lg.Genius('M-V4fucBQP_CYimhG7ZAl1f1UHmPqofWf3FG-0JKxDYDJ4MX61em4megFzr_AdVs',
+    genius = lg.Genius('',
                        skip_non_songs=True, excluded_terms=["(Remix)", "(Live)"], remove_section_headers=True)
     while True:
         user_playback = get_song()
